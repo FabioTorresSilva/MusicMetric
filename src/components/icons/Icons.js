@@ -1,5 +1,7 @@
 import Logotipo from './Logotipo.png';
 import FotoUsuario from './FotoUsuario.png'
+import AlbumDAMN from './Damn.png'
+
 
 export function UserIcon({ fill }) {
     return (
@@ -31,6 +33,11 @@ export function Disco() {
     )
 }
 
+export function AlbumDamn(){
+    return(
+        <img src={AlbumDAMN} className='text-lg rounded-lg w-32' ></img>
+    )
+}
 
 export function FotoUser() {
     return (
