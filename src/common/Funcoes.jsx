@@ -337,60 +337,53 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
 
 
 /// MILISEGUNDOS
-
 export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
     const hoje = new Date();
     let dataInicial;
-  
-    // Determina a data inicial com base no intervalo especificado
-    switch (intervalo) {
-      case 'ultimas4Semanas':
-        dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
-        break;
-      case 'ultimos6Meses':
-        dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
-        break;
-      case 'ultimoAno':
-        dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
-        break;
-      case 'desdeSempre':
-        dataInicial = new Date('1970-01-01');
-        break;
-      default:
-        throw new Error('Intervalo de tempo não especificado ou inválido.');
-    }
-  
-    // Filtra os dados com base no intervalo de datas e ignora entradas null ou inválidas
-    const dadosFiltrados = array.filter(item => item && new Date(item.ts) >= dataInicial);
-  
-    // Agrega os dados por música, somando os milissegundos tocados e calculando os minutos
-    const agregadoPorMusica = dadosFiltrados.reduce((acc, item) => {
-      if (!item || !item.master_metadata_track_name || !item.master_metadata_album_artist_name) {
-        return acc; // Ignora entradas inválidas ou incompletas
-      }
-      const chave = `${item.master_metadata_track_name} - ${item.master_metadata_album_artist_name}`;
-      if (!acc[chave]) {
-        acc[chave] = {
-          nome: item.master_metadata_track_name,
-          artista: item.master_metadata_album_artist_name,
-          album: item.master_metadata_album_album_name,
-          totalMsPlayed: 0,
-          totalMinutosPlayed: 0 // Inicializa a contagem de minutos
-        };
-      }
-      acc[chave].totalMsPlayed += item.ms_played;
-      acc[chave].totalMinutosPlayed = acc[chave].totalMsPlayed / 60000; // Atualiza os minutos
-      return acc;
-    }, {});
-  
-    // Ordena as músicas por total de milissegundos tocados e seleciona o top 100
-    const top100Musicas = Object.values(agregadoPorMusica)
-      .sort((a, b) => b.totalMsPlayed - a.totalMsPlayed)
-      .slice(0, 100);
-  
-    return top100Musicas;
-}
 
+    switch (intervalo) {
+        case 'ultimas4Semanas':
+            dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
+            break;
+        case 'ultimos6Meses':
+            dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
+            break;
+        case 'ultimoAno':
+            dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
+            break;
+        case 'desdeSempre':
+            dataInicial = new Date('1970-01-01');
+            break;
+        default:
+            throw new Error('Intervalo de tempo não especificado ou inválido.');
+    }
+
+    const filtrado = array.filter(item => {
+        const dataItemValida = new Date(item.ts) >= dataInicial;
+        const temNomeMusica = item.master_metadata_track_name != null;
+        const temNomeArtista = item.master_metadata_album_artist_name != null;
+        return dataItemValida && temNomeMusica && temNomeArtista;
+    });
+
+    const agrupado = filtrado.reduce((acc, item) => {
+        const chave = `${item.master_metadata_track_name} - ${item.master_metadata_album_artist_name}`;
+        if (!acc[chave]) {
+            acc[chave] = 0;
+        }
+        acc[chave] += item.ms_played;
+        return acc;
+    }, {});
+
+    const ordenado = Object.entries(agrupado)
+        .map(([nome, ms_played]) => ({
+            nome,
+            minutos: ms_played / 60000
+        }))
+        .sort((a, b) => b.minutos - a.minutos)
+        .slice(0, 100);
+
+    return ordenado;
+}
 
 
   // TOP 20 MILISEGUNDOS 
