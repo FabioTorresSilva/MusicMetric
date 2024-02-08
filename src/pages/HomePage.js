@@ -1,5 +1,4 @@
-import React from 'react';
-import { FotoUser} from '../components/icons/Icons';
+import { FotoUser } from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
 import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocados, musicasDiferentes } from '../common/Funcoes';
 import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes'; // Importa as funções para calcular as estações e suas percentagens
@@ -9,6 +8,8 @@ function HomePage() {
     const dados = [];
     const tempoPorEstacao = calcularTempoPorEstacao(dados);
     const estacoesEPercentagens = calcularPercentagens(tempoPorEstacao);
+
+    
 
     return (
         <div className='bg-fundo h-full px-3'>
@@ -61,17 +62,20 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
+                    
+                    <div>
+                        <h1>ewqqwe</h1>
+                        <h1>ewqqwe</h1>
+                        <h1>ewqqwe</h1>
+                        <h1>ewqqwe</h1>
+                        <h1>ewqqwe</h1>
+                        <h1>ewqqwe</h1>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
