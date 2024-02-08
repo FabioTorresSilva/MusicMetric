@@ -16,7 +16,7 @@ const ArtistsPage = () => {
 
           <div className='flex text-white bg-amarelo w-16 rounded-l-lg p-4'> 1</div>
 
-          <div className='flex text-white bg-azul w-64  p-4 rounded-r-lg'> nome do artista</div>
+          <div className='flex text-white bg-azul w-full  p-4 rounded-r-lg'> nome do artista</div>
 
         </div>
 
@@ -24,7 +24,7 @@ const ArtistsPage = () => {
           
           <div className='flex text-white bg-amarelo w-16 rounded-l-lg p-4'> 1</div>
 
-          <div className='flex text-white bg-azul w-64  p-4 rounded-r-lg'> nome do artista</div>
+          <div className='flex text-white bg-azul w-full  p-4 rounded-r-lg'> nome do artista</div>
 
         </div>
 
