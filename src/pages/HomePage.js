@@ -2,7 +2,7 @@ import React from 'react';
 import { FotoUser} from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
 import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocados, musicasDiferentes } from '../common/Funcoes';
-import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes'; // Importa as funções para calcular as estações e suas percentagens
+import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes'; 
 
 function HomePage() {
 
@@ -45,9 +45,9 @@ function HomePage() {
 
                         <div className='flex justify-center mb-2 text-xl font-bold'>Dias consecutivos</div>
                         <div className='flex flex-row justify-around'>
-                            <div className='text-lg'>Strike Atual<p className='mb-2 text-xl font-bold'>{calcularStrikeAtual()}🔥</p></div>
+                            <div className='text-lg'>Streak Atual<p className='mb-2 text-xl font-bold'>{calcularStrikeAtual()}🔥</p></div>
 
-                            <div className='text-lg'>O seu maior strike<p className='mb-2 text-xl font-bold'>{calcularStrikeDeEscuta()}🔥</p></div>
+                            <div className='text-lg'>O seu maior streak<p className='mb-2 text-xl font-bold'>{calcularStrikeDeEscuta()}🔥</p></div>
                         </div>
                     </div>
                 </div>

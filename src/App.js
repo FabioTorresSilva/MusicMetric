@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import UserMetrics from './pages/UserMetrics';
 import MusicPage from './pages/MusicPage'; // Importe o componente da página de músicas
 import ArtistsPage from './pages/ArtistsPage'; // Importe o componente da página de artistas
-import GenresPage from './pages/GenresPage'; // Importe o componente da página de gêneros
+
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Route path="/" element={<Layout><HomePage /></Layout>} />
         <Route path="/usermetrics" element={<Layout><UserMetrics /></Layout>} />
         <Route path="/musicas" element={<Layout><MusicPage /></Layout>} /> 
-        <Route path="/artistas" element={<Layout><ArtistsPage /></Layout>} />  // Rota para a página de artistas
-        <Route path="/generos" element={<Layout><GenresPage /></Layout>} />  // Rota para a página de gêneros
+        <Route path="/artistas" element={<Layout><ArtistsPage /></Layout>} /> 
+        
       </Routes>
     </Router>
   );
