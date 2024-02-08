@@ -59,7 +59,7 @@ function UserMetrics() {
                 </div>
 
                 <div className='text-center bg-amarelo w-full rounded-lg p-4 h-36 '>
-                    <div className='fh-full flex gap-4 justify-center items-center content-center'>
+                    <div className='h-full flex gap-4 justify-center items-center content-center'>
                         <div className='flex justify-center items-center content-center'>
                             {noite ? <Moon /> : <Sun />}
                         </div>
@@ -71,32 +71,22 @@ function UserMetrics() {
                 </div>
 
                 <div className='flex justify-center text-xl font-bold text-white'>Percentagem em Plays:</div>
-                <select className='flex flex-col py-2 content-center px-2 w-full justify-center items-center rounded-lg text-black' onChange={handleArtistChange}>
-                    <option className='flex justify-center font-bold text-center'> Selecione o artista </option>
-                    {/* Mapping through each artist object in our array
-                    and returning an option element with the appropriate attributes / values.
-                        */}
+                <div>
+                    <select className='flex text-xl font-bold py-2 content-center px-2 w-full justify-center items-center rounded-lg text-black text-center' onChange={handleArtistChange}>
+                        <option> Selecione o artista </option>
+                        {/* Mapping through each artist object in our array
+                        and returning an option element with the appropriate attributes / values.
+                            */}
 
-                    {gerarTop100Artistas().map((artist) => <option value={artist}>{artist}</option>)}
-                </select>
-
+                        {gerarTop100Artistas().map((artist) => <option value={artist}>{artist}</option>)}
+                    </select>
+                </div>
                 <div className='text-white text-2xl flex flex-col items-center text-center font-bold'> {percentagemPlaysArtista({ artist }.artist)} </div>
 
 
             </div>
             <div>
-                <div>
-                    {/*      <div className='bg-azul w-full rounded-lg p-4 flex flex-col mt-3 g-3'>
-                <p className='text-white font-bold'>Qual a Estação do ano em que mais ouviste música?</p>
-                <div className=''>
-                    {estacoesEPercentagens.map(({ estacao, percentagem }) => (
-                        <div key={estacao} className={`bg-amarelo w-[${percentagem}%] mt-2 text-xs p-1`}>
-                            {estacao}: {percentagem}%
-                        </div>
-                    ))}
-                </div>
-            </div> */}
-                </div>
+               
             </div>
         </div>
     );

@@ -1,10 +1,15 @@
 import React from 'react';
+import { Play } from '../components/icons/Icons';
 
 const MusicPage = () => {
   return (
     <div>
-      <h1>Página de Músicas</h1>
-      qweqweqwe
+      <h1 className='flex font-semibold text-white text-2xl justify-center'>Play</h1>
+      <div>
+        <Play/>
+      </div>
+      
+      
     </div>
   );
 };

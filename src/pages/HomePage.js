@@ -26,7 +26,7 @@ function HomePage() {
             <div>
                 
                 <div className='flex items-center w-full justify-center gap-3 mt-6'>
-                    <div className='bg-azul w-full rounded-lg p-4 flex flex-col'>
+                    <div className='bg-azul w-full rounded-lg p-4 flex flex-col text-white'>
 
                         <div className='flex justify-center mb-2 text-xl font-bold'>Dias consecutivos</div>
                         <div className='flex flex-row justify-around'>
