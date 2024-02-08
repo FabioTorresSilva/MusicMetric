@@ -12,10 +12,13 @@ export function IconBar() {
 
     return (
         <div className="fixed bottom-0 inset-x-0 z-50">
-            <div className='flex justify-center gap-8 text-white'>
+            <div className="flex justify-center gap-8 text-white py-4 bg-black">
                 {(location.pathname === "/musicas" || location.pathname === "/artistas") && (
-                    <div className='cursor-pointer'>
-                        <Definicoes className="text-white" />
+                    <div className=" border-2 border-amarelo flex justify-around py-2 rounded-md w-full mx-6">
+                        <div className="cursor-pointer">4W</div>
+                        <div className="cursor-pointer">6M</div>
+                        <div className="cursor-pointer">1Y</div>
+                        <div className="cursor-pointer">Always</div>
                     </div>
                 )}
             </div>

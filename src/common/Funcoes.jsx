@@ -109,16 +109,29 @@ export function playsTotal() {
 }
 
 
-export function miliMinutosTocados() {
+export function miliMinutosTocadosMusica() {
     let totalMilissegundos = 0;
-    array.forEach((e) => {
-      if(e.ms_played !== null){
+    array
+      .filter((e) => {
+        return e.master_metadata_album_artist_name !== null;
+      })
+      .forEach((e) => {
         totalMilissegundos += e.ms_played;
-    }
-    });
+      });
     return Math.round(totalMilissegundos / 60000);
   }
-
+  
+  export function miliMinutosTocadosPodcast() {
+    let totalMilissegundos = 0;
+    array
+      .filter((e) => {
+        return e.episode_name !== null;
+      })
+      .forEach((e) => {
+        totalMilissegundos += e.ms_played;
+      });
+    return Math.round(totalMilissegundos / 60000);
+  }
 
 // ARTISTA
 //Ver % das plays dentro do total (ex: Kendrick Lamar representa 1.7% das minhas plays)

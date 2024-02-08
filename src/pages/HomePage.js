@@ -1,6 +1,6 @@
 import { FotoUser } from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
-import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocados, musicasDiferentes } from '../common/Funcoes';
+import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocadosMusica, musicasDiferentes } from '../common/Funcoes';
 import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes'; 
 
 function HomePage() {
@@ -19,7 +19,7 @@ function HomePage() {
                 </div>
                 <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
                     <div className='text-lg'>Passou</div>
-                    <div className='mb-2 text-xl font-bold'>{miliMinutosTocados()}</div>
+                    <div className='mb-2 text-xl font-bold'>{miliMinutosTocadosMusica()}</div>
                     <div className='text-lg'>minutos a ouvir música.</div>
                 </div>
             </div>
@@ -36,9 +36,8 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                <div className='flex items-center w-full justify-center gap-3 mt-6'>
+                <div className='flex items-center w-full justify-center gap-3 mt-6 mb-16 '>
                     <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
-
                         <div className='flex justify-center mb-2 text-xl font-bold'>Albúm mais tocado!  </div>
                         <div className='flex flex-row justify-around'>
                             <div className='text-lg'><p className='mb-2 text-xl '>{albumMaisOuvido()}</p></div>
@@ -47,17 +46,7 @@ function HomePage() {
                     </div>
                 </div>
 
-                <div>
-                    
-                    <div>
-                        <h1>ewqqwe</h1>
-                        <h1>ewqqwe</h1>
-                        <h1>ewqqwe</h1>
-                        <h1>ewqqwe</h1>
-                        <h1>ewqqwe</h1>
-                        <h1>ewqqwe</h1>
-                    </div>
-                </div>
+                
             </div>
         </div>
     );

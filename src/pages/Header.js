@@ -4,7 +4,7 @@ import { Disco, AppIcon, UserIcon } from '../components/icons/Icons';
 
 export function Header() {
     const navigate = useNavigate();
-    const location = useLocation(); // Renamed for clarity
+    const location = useLocation();
     const [activeTab, setActiveTab] = useState('all');
 
     const tabClass = (tabName) =>
