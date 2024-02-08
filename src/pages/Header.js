@@ -28,10 +28,10 @@ export function Header() {
                 </div>
                 <div>
                     <h1 className='flex justify-center mt-4 font-semibold text-white text-2xl'>Métricas</h1>
-                    <div className='flex justify-center gap-8 text-white'>
+                    <div className='flex justify-center gap-24 text-white'>
                         <button className={tabClass('all')} onClick={() => handleTabChange('all')}>All</button>
                         {location.pathname !== "/usermetrics" && (
-                            <div className='flex justify-between gap-8 text-white'>
+                            <div className='flex justify-between gap-24 text-white'>
                                 <button className={tabClass('musicas')} onClick={() => handleTabChange('musicas')}>Músicas</button>
                                 <button className={tabClass('artistas')} onClick={() => handleTabChange('artistas')}>Artistas</button>
                             </div>
