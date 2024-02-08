@@ -16,8 +16,6 @@ function UserMetrics() {
 
     const navigate = useNavigate();
    
-    
-    
     // Using state to keep track of what the selected artist is
     let [artist, setArtist] = useState()
 
