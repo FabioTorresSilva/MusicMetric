@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Disco, AppIcon, UserIcon } from '../components/icons/Icons';
 
-export function Header() {
+export function Header({ activeTab, setActiveTab }) {
     const navigate = useNavigate();
     const location = useLocation();
-    const [activeTab, setActiveTab] = useState('all');
+
 
     const tabClass = (tabName) =>
-        `font-bold ${activeTab === tabName ? 'border-b-2 border-azul' : ''}`;
+        `font-bold ${activeTab === tabName ? 'border-b-2 border-amarelo' : ''}`;
 
     const handleTabChange = (tabName) => {
         setActiveTab(tabName);
@@ -22,7 +22,7 @@ export function Header() {
                 <div className="flex justify-between items-center h-20 px-6 border-b-2 border-white">
                     <Disco className="text-white" />
                     <div className='cursor-pointer' onClick={() => handleTabChange('all')}>
-                    <AppIcon className="text-white" />
+                        <AppIcon className="text-white" />
                     </div>
                     <UserIcon className="text-white" />
                 </div>

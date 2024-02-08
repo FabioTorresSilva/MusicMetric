@@ -1,15 +1,18 @@
-import React from 'react';
-import { Header } from './Header.js'; 
-import { IconBar } from './IconBar.js'; 
+import React,{ useState } from 'react';
+import { Header } from './Header.js';
+import { IconBar } from './IconBar.js';
 
 const Layout = ({ children }) => {
+  const [selectedPeriod, setSelectedPeriod] = useState('Always');
+  const [activeTab, setActiveTab] = useState('all');
+
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab}/>
       <main className="flex-grow">
-        {children}
+        {React.cloneElement(children, { selectedPeriod, setSelectedPeriod })}
       </main>
-      <IconBar />
+      <IconBar selectedPeriod={selectedPeriod} setSelectedPeriod={setSelectedPeriod} />
     </div>
   );
 };

@@ -43,10 +43,10 @@ export default App;
     calcularStrikeAtual: calcularStrikeAtual(),
     encontrarPosicaoArtistaNoTop100: encontrarPosicaoArtistaNoTop100("Kendrick Lamar"),
     gerarTop100Artistas: gerarTop100Artistas(),
-    calcularTop100ArtistasPorIntervalo: calcularTop100ArtistasPorIntervalo('ultimas4Semanas'),
-    calcularTop100MusicasPorMilissegundosEIntervalo: calcularTop100MusicasPorMilissegundosEIntervalo('ultimas4Semanas'),
-    calcularTop20MusicasPorMilissegundosEIntervalo: calcularTop20MusicasPorMilissegundosEIntervalo('ultimas4Semanas'),
-    calcularTop20MusicasArtistaPorIntervalo: calcularTop20MusicasArtistaPorIntervalo('TOOL' , 'ultimas4Semanas')
+    calcularTop100ArtistasPorIntervalo: calcularTop100ArtistasPorIntervalo('4W'),
+    calcularTop100MusicasPorMilissegundosEIntervalo: calcularTop100MusicasPorMilissegundosEIntervalo('4W'),
+    calcularTop20MusicasPorMilissegundosEIntervalo: calcularTop20MusicasPorMilissegundosEIntervalo('4W'),
+    calcularTop20MusicasArtistaPorIntervalo: calcularTop20MusicasArtistaPorIntervalo('TOOL' , '4W')
    
     })
 

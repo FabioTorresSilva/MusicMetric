@@ -299,16 +299,16 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
   let dataInicial;
 
   switch (intervalo) {
-    case 'ultimas4Semanas':
+    case '4W':
       dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
       break;
-    case 'ultimos6Meses':
+    case '6M':
       dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
       break;
-    case 'ultimoAno':
+    case '1Y':
       dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
       break;
-    case 'desdeSempre':
+    case 'Always':
       dataInicial = new Date('1970-01-01');
       break;
     default:
@@ -350,17 +350,18 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
     const hoje = new Date();
     let dataInicial;
 
+
     switch (intervalo) {
-        case 'ultimas4Semanas':
+        case '4W':
             dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
             break;
-        case 'ultimos6Meses':
+        case '6M':
             dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
             break;
-        case 'ultimoAno':
+        case '1Y':
             dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
             break;
-        case 'desdeSempre':
+        case 'Always':
             dataInicial = new Date('1970-01-01');
             break;
         default:
@@ -402,16 +403,16 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
     let dataInicial;
 
     switch (intervalo) {
-        case 'ultimas4Semanas':
+        case '4W':
             dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
             break;
-        case 'ultimos6Meses':
+        case '6M':
             dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
             break;
-        case 'ultimoAno':
+        case '1Y':
             dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
             break;
-        case 'desdeSempre':
+        case 'Always':
             dataInicial = new Date('1970-01-01'); 
             break;
         default:
@@ -450,16 +451,16 @@ export function calcularTop20MusicasArtistaPorIntervalo(nomeArtista, intervalo) 
     let dataInicial;
   
     switch (intervalo) {
-      case 'ultimas4Semanas':
+      case '4W':
         dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
         break;
-      case 'ultimos6Meses':
+      case '6M':
         dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
         break;
-      case 'ultimoAno':
+      case '1Y':
         dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
         break;
-      case 'desdeSempre':
+      case 'Always':
         dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
         break;
       default:
