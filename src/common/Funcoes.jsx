@@ -112,11 +112,12 @@ export function playsTotal() {
 export function miliMinutosTocados() {
     let totalMilissegundos = 0;
     array.forEach((e) => {
+      if(e.ms_played !== null){
         totalMilissegundos += e.ms_played;
-    })
+    }
+    });
     return Math.round(totalMilissegundos / 60000);
-}
-
+  }
 
 
 // ARTISTA
@@ -295,7 +296,7 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
             dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
             break;
         case 'desdeSempre':
-            dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
+            dataInicial = new Date('1970-01-01');
             break;
         default:
             throw new Error('Intervalo de tempo não especificado ou inválido.');
