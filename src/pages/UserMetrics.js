@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { miliMinutosTocados, musicasDiferentes, playsTotal, estacoesEPercentagens, mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
+import {mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
 import { useNavigate } from 'react-router-dom';
 import { Moon, Sun, Wave } from '../components/icons/Icons';
-import { mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas } from '../common/Funcoes';
 
 function num(e) {
     this.setState({ selected: e.target.value });
