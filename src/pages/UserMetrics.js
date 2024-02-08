@@ -72,10 +72,6 @@ function UserMetrics() {
                 <div>
                     <select className='flex text-xl font-bold py-2 content-center px-2 w-full justify-center items-center rounded-lg text-black text-center' onChange={handleArtistChange}>
                         <option> Selecione o artista </option>
-                        {/* Mapping through each artist object in our array
-                        and returning an option element with the appropriate attributes / values.
-                            */}
-
                         {gerarTop100Artistas().map((artist) => <option value={artist}>{artist}</option>)}
                     </select>
                 </div>

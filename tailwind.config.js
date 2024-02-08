@@ -6,8 +6,8 @@ module.exports = {
       "amarelo" : "#FFD133",
       "white" : "#FFFFFF",
       "fundo" : "#101010",
-      "azul" : "#321583"
-    },
+      "azul" : "#321583",
+      "black":  "#000000"  },
     extend: {},
   },
   plugins: [],
