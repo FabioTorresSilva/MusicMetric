@@ -3,6 +3,8 @@ import FotoUsuario from './FotoUsuario.png'
 import Onda from './Onda.png'
 import Sol from './Sol.png'
 import Lua from './Lua.png'
+import AlbumDAMN from './Damn.png'
+
 
 export function UserIcon({ fill }) {
     return (
@@ -34,6 +36,11 @@ export function Disco() {
     )
 }
 
+export function AlbumDamn(){
+    return(
+        <img src={AlbumDAMN} className='text-lg rounded-lg w-32' ></img>
+    )
+}
 
 export function FotoUser() {
     return (

@@ -1,18 +1,13 @@
 import array from "../assets/data/history.json"
 
-export function musicasDiferentes(){
-    return new Set(array.map((item) => item.master_metadata_track_name)).size
-}
-
-
-/* export function estacoesEPercentagens() {
+export function calcularTempoPorEstacao() {
     const tempoPorEstacao = {
         Primavera: 0,
         Verão: 0,
         Outono: 0,
         Inverno: 0
     };
-
+    
     array.forEach((item) => {
         const data = new Date(item.ts);
         const mes = data.getMonth() + 1;
@@ -27,29 +22,42 @@ export function musicasDiferentes(){
         } else {
             estacao = "Inverno";
         }
-
-        const minutosTocados = parseInt(item.ms_played, 10) / 60000; // Convertendo para minutos
+        
+        const minutosTocados = parseInt(item.ms_played, 10) / 60000; 
         tempoPorEstacao[estacao] += minutosTocados;
     });
+    
+    return tempoPorEstacao;
+}
 
+export function calcularPercentagens(tempoPorEstacao) {
     const totalMinutos = Object.values(tempoPorEstacao).reduce((acc, minutos) => acc + minutos, 0);
-
     const estacoesEPercentagens = Object.entries(tempoPorEstacao).map(([estacao, minutos]) => ({
         estacao,
         minutos: minutos.toFixed(2), // Arredondando para duas casas decimais
-        percentagem: ((minutos / totalMinutos) * 100).toFixed(2) // Calculando a percentagem
+        percentagem: ((minutos / totalMinutos) * 100).toFixed(2) // Calcula a porcentagem
     }));
-
-   
-    estacoesEPercentagens.sort((a, b) => b.minutos - a.minutos);
-
+    
+    estacoesEPercentagens.sort((a, b) => b.minutos - a.minutos); // Ordena do mais ao menos tocado
+    
     return estacoesEPercentagens;
 }
- */
+
+export function estacoesEPercentagens() {
+    const tempoPorEstacao = calcularTempoPorEstacao(array);
+    return calcularPercentagens(tempoPorEstacao);
+}
 
 
 
 
+
+
+
+
+export function musicasDiferentes(){
+    return new Set(array.map((item) => item.master_metadata_track_name)).size
+}
 
 
 export function horaMaisOuve() {
@@ -185,7 +193,7 @@ export function albumMaisOuvido() {
     const albumMaisEscutado = Object.keys(tempoPorAlbum).reduce((a, b) => tempoPorAlbum[a] > tempoPorAlbum[b] ? a : b, "")
     const tempoTotalMinutos = Math.round(tempoPorAlbum[albumMaisEscutado] / 60000)
 
-    return `Álbum mais ouvido: ${albumMaisEscutado} com ${tempoTotalMinutos} minutos ouvidos.`
+    return `${albumMaisEscutado} com ${tempoTotalMinutos} minutos.`
 }
 
 
@@ -213,7 +221,7 @@ export function calcularStrikeDeEscuta() {
     }
     maiorStrike = Math.max(maiorStrike, strikeAtual)
 
-    return `Maior Strike de dias consecutivos: ${maiorStrike}`
+    return maiorStrike
 }
 
 
@@ -235,7 +243,7 @@ export function calcularStrikeAtual() {
         }
     }
 
-    return `O seu strike atual: ${strikeAtual}`;
+    return strikeAtual
 }
 
 
