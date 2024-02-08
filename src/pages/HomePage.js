@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { FotoUser} from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
 import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocados, musicasDiferentes } from '../common/Funcoes';
@@ -58,7 +57,6 @@ function HomePage() {
                         <div className='flex justify-center mb-2 text-xl font-bold'>Albúm mais tocado!  </div>
                         <div className='flex flex-row justify-around'>
                             <div className='text-lg'><p className='mb-2 text-xl '>{albumMaisOuvido()}</p></div>
-
                             <div className='text-lg rounded-lg'><AlbumDamn /></div>
                         </div>
                     </div>
