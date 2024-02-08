@@ -17,9 +17,9 @@ export function IconBar() {
 
     return (
         <div className="fixed bottom-0 inset-x-0 z-50">
-        <div className="flex justify-center gap-8 text-white py-4 bg-black">
+        <div className="flex justify-center gap-8 text-white py-4 ">
             {(location.pathname === "/musicas" || location.pathname === "/artistas") && (
-                <div className=" border-2 border-amarelo flex justify-around py-2 rounded-md w-full mx-6">
+                <div className=" bg-fundo border-2 border-amarelo flex justify-around py-2 rounded-md w-full mx-6">
                     {/* Adicione uma classe condicional baseada no estado selecionado */}
                     <div className={`cursor-pointer ${selected === '4W' ? 'underline' : ''}`} onClick={() => handleSelection('4W')}>4W</div>
                     <div className={`cursor-pointer ${selected === '6M' ? 'underline' : ''}`} onClick={() => handleSelection('6M')}>6M</div>

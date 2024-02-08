@@ -354,27 +354,32 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
         dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
         break;
       case 'desdeSempre':
-        dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
+        dataInicial = new Date('1970-01-01');
         break;
       default:
         throw new Error('Intervalo de tempo não especificado ou inválido.');
     }
   
-    // Filtra os dados com base no intervalo de datas
-    const dadosFiltrados = array.filter(item => new Date(item.ts) >= dataInicial);
+    // Filtra os dados com base no intervalo de datas e ignora entradas null ou inválidas
+    const dadosFiltrados = array.filter(item => item && new Date(item.ts) >= dataInicial);
   
-    // Agrega os dados por música, somando os milissegundos tocados
+    // Agrega os dados por música, somando os milissegundos tocados e calculando os minutos
     const agregadoPorMusica = dadosFiltrados.reduce((acc, item) => {
+      if (!item || !item.master_metadata_track_name || !item.master_metadata_album_artist_name) {
+        return acc; // Ignora entradas inválidas ou incompletas
+      }
       const chave = `${item.master_metadata_track_name} - ${item.master_metadata_album_artist_name}`;
       if (!acc[chave]) {
         acc[chave] = {
           nome: item.master_metadata_track_name,
           artista: item.master_metadata_album_artist_name,
           album: item.master_metadata_album_album_name,
-          totalMsPlayed: 0
+          totalMsPlayed: 0,
+          totalMinutosPlayed: 0 // Inicializa a contagem de minutos
         };
       }
       acc[chave].totalMsPlayed += item.ms_played;
+      acc[chave].totalMinutosPlayed = acc[chave].totalMsPlayed / 60000; // Atualiza os minutos
       return acc;
     }, {});
   
@@ -384,7 +389,7 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
       .slice(0, 100);
   
     return top100Musicas;
-  }
+}
 
 
 
@@ -405,7 +410,7 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
             dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
             break;
         case 'desdeSempre':
-            dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
+            dataInicial = new Date('1970-01-01'); 
             break;
         default:
             throw new Error('Intervalo de tempo não especificado ou inválido.');

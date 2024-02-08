@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import UserMetrics from './pages/UserMetrics';
 import MusicPage from './pages/MusicPage'; // Importe o componente da página de músicas
 import ArtistsPage from './pages/ArtistsPage'; // Importe o componente da página de artistas
+import MetricasArtista from './pages/MetricasArtista';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/usermetrics" element={<Layout><UserMetrics /></Layout>} />
         <Route path="/musicas" element={<Layout><MusicPage /></Layout>} /> 
         <Route path="/artistas" element={<Layout><ArtistsPage /></Layout>} /> 
+        <Route path="/metricasartista" element={<Layout><MetricasArtista /></Layout>} /> 
         
       </Routes>
     </Router>
