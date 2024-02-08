@@ -1,31 +1,41 @@
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocadosMusica, musicasDiferentes } from '../common/Funcoes';
 
-function MetricasArtista() {  
+import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista, miliMinutosTocadosMusica, musicasDiferentes, numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
+
+function MetricasArtista() {
+    let { nome } = useParams();
 
     return (
         <div>
+            <div>
+                <h2 className='text-2xl flex justify-center font-bold text-amarelo'>{nome}</h2>
+                <p className='text-xl font-medium flex justify-center text-white'>{encontrarPosicaoArtistaNoTop100(nome)}</p>
+
+            </div>
             <div className='flex items-center w-full justify-center gap-6 mt-8'>
                 <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
-                    <div className='text-lg'>Ouviu</div>
-                    <div className='mb-2 text-xl font-bold'>{musicasDiferentes()}</div>
-                    <div className='text-lg'>Músicas diferentes</div>
+                    <div className='text-lg'>Ouvido</div>
+                    <div className='mb-2 text-xl font-bold'>{numeroPlaysArtista(nome)}</div>
+                    <div className='text-lg'>vezes</div>
                 </div>
                 <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
                     <div className='text-lg'>Passou</div>
-                    <div className='mb-2 text-xl font-bold'>{miliMinutosTocadosMusica()}</div>
+                    <div className='mb-2 text-xl font-bold'>{(nome)}</div>
                     <div className='text-lg'>minutos a ouvir música.</div>
                 </div>
             </div>
             <div>
                 <div className='flex items-center w-full justify-center gap-3 mt-6'>
                     <div className='bg-azul w-full rounded-lg p-4 flex flex-col text-white'>
-
-                        <div className='flex justify-center mb-2 text-xl font-bold'>Dias consecutivos</div>
                         <div className='flex flex-row justify-around'>
-                            <div className='text-lg'>Streak Atual<p className='mb-2 text-xl font-bold'>{calcularStrikeAtual()}🔥</p></div>
-
-                            <div className='text-lg'>O seu maior streak<p className='mb-2 text-xl font-bold'>{calcularStrikeDeEscuta()}🔥</p></div>
+                            <div className='text-lg'>Representa<p className='mb-2 text-xl font-bold'>{percentagemPlaysArtista(nome)}</p> das suas plays</div>
+                        </div>
+                    </div>
+                    <div className='bg-azul w-full rounded-lg p-4 flex flex-col text-white'>
+                        <div className='flex flex-row justify-around'>
+                            <div className='text-lg'>Mais Ouvido no<p className='mb-2 text-xl font-bold'>{estacaoMaisOuveArtista(nome)}</p></div>
                         </div>
                     </div>
                 </div>
@@ -37,6 +47,22 @@ function MetricasArtista() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+            <div className='p-4 flex justify-center text-xl text-amarelo '>
+                Top Songs
+            </div>
+                {(calcularTop20MusicasArtistaPorIntervalo((nome),'desdeSempre')).map((e, index) =>
+                    <div>
+                        <div className='flex'>
+                            <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index + 1} </div>
+                            <div className='flex justify-between  text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.nome} </p>
+                                <p className=''>{e.m} Plays </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                <div className='h-20 '></div>
             </div>
         </div>
     )
