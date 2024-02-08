@@ -11,11 +11,11 @@ function HomePage() {
     const estacoesEPercentagens = calcularPercentagens(tempoPorEstacao);
 
     return (
-        <div className='bg-fundo h-full px-3'>
+        <div className='bg-fundo h-full '>
             <div className='flex justify-center mt-8'>
                 <FotoUser />
             </div>
-            <div className='flex items-center w-full justify-center gap-3 mt-8'>
+            <div className='flex items-center w-full justify-center gap-6 mt-8'>
                 <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
                     <div className='text-lg'>Ouviu</div>
                     <div className='mb-2 text-xl font-bold'>{musicasDiferentes()}</div>
@@ -29,18 +29,18 @@ function HomePage() {
             </div>
             <div>
                 <div>
-                    <div className='bg-azul w-full rounded-lg p-4 flex flex-col mt-3 g-3'>
+                    <div className='bg-azul w-full rounded-lg p-4 flex flex-col mt-6 g-3'>
                         <p className='text-white font-bold'>Qual a Estação do ano em que mais ouviste música?</p>
                         <div className=''>
                             {estacoesEPercentagens.map(({ estacao, percentagem }) => (
-                                <div key={estacao} className={`rounded-lg bg-amarelo w-${percentagem} mt-2 text-xs p-1 flex items-center`}>
+                                <div key={estacao} className={`rounded-lg bg-amarelo   mt-2 text-xs p-1 flex items-center`}style={{width: Math.abs(percentagem*10)}}>
                                     <span className='text-preto mr-2'>{estacao}:</span> {percentagem}%
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
-                <div className='flex items-center w-full justify-center gap-3 mt-3'>
+                <div className='flex items-center w-full justify-center gap-3 mt-6'>
                     <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
 
                         <div className='flex justify-center mb-2 text-xl font-bold'>Dias consecutivos</div>
@@ -51,7 +51,7 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-                <div className='flex items-center w-full justify-center gap-3 mt-3'>
+                <div className='flex items-center w-full justify-center gap-3 mt-6'>
                     <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
 
                         <div className='flex justify-center mb-2 text-xl font-bold'>Albúm mais tocado!  </div>
@@ -60,15 +60,6 @@ function HomePage() {
                             <div className='text-lg rounded-lg'><AlbumDamn /></div>
                         </div>
                     </div>
-                </div>
-                
-                <div>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
-                    <h1>ewqqwe</h1>
                 </div>
             </div>
         </div>

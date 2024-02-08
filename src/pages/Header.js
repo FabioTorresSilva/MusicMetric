@@ -25,11 +25,11 @@ export function Header() {
                 </div>
                 <div>
                     <h1 className='flex justify-center mt-4 font-semibold text-white text-2xl'>Métricas</h1>
-                    <div className='flex justify-between px-6 text-white'>
+                    <div className='flex justify-between  text-white'>
                         <button className={tabClass('all')} onClick={() => handleTabChange('all')}>All</button>
                         <button className={tabClass('musicas')} onClick={() => handleTabChange('musicas')}>Músicas</button>
                         <button className={tabClass('artistas')} onClick={() => handleTabChange('artistas')}>Artistas</button>
-                        <button className={tabClass('generos')} onClick={() => handleTabChange('generos')}>Géneros</button>
+                        {/* <button className={tabClass('generos')} onClick={() => handleTabChange('generos')}>Géneros</button> */}
                     </div>
                 </div>
             </div>
