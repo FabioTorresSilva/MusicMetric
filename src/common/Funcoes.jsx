@@ -68,7 +68,9 @@ export function horaMaisOuve() {
         }
     }, Object.keys(tempoPorHora)[0])
 
-    return `entre as ${Number(horaMaisTocada)}h e as ${(Number(horaMaisTocada) + 1)}h`
+    // preciamos de mais do que um campo com a mensagem a vir para fora, logo retornamos um objeto que tem o numero da hora
+    return {'msg': `entre as ${Number(horaMaisTocada)}h e as ${(Number(horaMaisTocada) + 1)}h`,
+    'hora':Number(horaMaisTocada)}
 }
 
 
@@ -120,7 +122,6 @@ export function numeroPlaysArtista(nome) {
     return artistaPlays[nome]
 }
 
-
 // retorna % de artista e numero plays
 export function percentagemPlaysArtista(nome) {
     const totalReproducoes = array.length
@@ -130,11 +131,13 @@ export function percentagemPlaysArtista(nome) {
         const artista = item.master_metadata_album_artist_name;
         percentagemArtistaPlays[artista] = (percentagemArtistaPlays[artista] || 0) + 1
     })
+  
     Object.keys(percentagemArtistaPlays).forEach((artista) => {
         percentagemArtistaPlays[artista] = (percentagemArtistaPlays[artista] / totalReproducoes) * 100
     })
 
-    return percentagemArtistaPlays[nome].toFixed(2)
+    let percentagem = percentagemArtistaPlays[nome] > 0 ? percentagemArtistaPlays[nome].toFixed(2)+'%' : percentagemArtistaPlays[nome]
+    return percentagem 
 }
 
 

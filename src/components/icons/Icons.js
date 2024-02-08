@@ -1,5 +1,8 @@
 import Logotipo from './Logotipo.png';
 import FotoUsuario from './FotoUsuario.png'
+import Onda from './Onda.png'
+import Sol from './Sol.png'
+import Lua from './Lua.png'
 
 export function UserIcon({ fill }) {
     return (
@@ -35,6 +38,24 @@ export function Disco() {
 export function FotoUser() {
     return (
         <img src={FotoUsuario}></img>
+    )
+}
+
+export function Wave () {
+    return (
+        <img src={Onda}></img>
+    )
+}
+
+export function Sun () {
+    return (
+        <img src={Sol}></img>
+    )
+}
+
+export function Moon () {
+    return (
+        <img src={Lua}></img>
     )
 }
 

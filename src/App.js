@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout';
 import HomePage from './pages/HomePage'; 
+import UserMetrics from './pages/UserMetrics';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       <Routes>
      
         <Route path="/" element={<Layout><HomePage /></Layout>} />
+        <Route path="/usermetrics" element={<Layout><UserMetrics /></Layout>} />
+        
         
       </Routes>
     </Router>
