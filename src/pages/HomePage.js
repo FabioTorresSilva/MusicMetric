@@ -2,6 +2,9 @@ import { FotoUser } from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
 import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocadosMusica, musicasDiferentes } from '../common/Funcoes';
 import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes'; 
+import { ImageToggleOnMouseOver } from '../components/icons/userAvatar';
+import img1 from "../components/icons/FotoUsuario.png"
+import img2 from "../components/icons/FotoUsuario2.png"
 
 function HomePage() {
     
@@ -9,7 +12,7 @@ function HomePage() {
     return (
         <div className='bg-fundo h-full '>
             <div className='flex justify-center mt-8'>
-                <FotoUser />
+           <ImageToggleOnMouseOver primaryImg={img1} secondaryImg={img2}/>
             </div>
             <div className='flex items-center w-full justify-center gap-6 mt-8'>
                 <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
