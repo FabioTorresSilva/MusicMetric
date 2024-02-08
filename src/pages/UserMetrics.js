@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { miliMinutosTocados, musicasDiferentes, playsTotal, estacoesEPercentagens, mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
+import { useNavigate } from 'react-router-dom';
 import { Moon, Sun, Wave } from '../components/icons/Icons';
+import { mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas } from '../common/Funcoes';
 
 function num(e) {
     this.setState({ selected: e.target.value });
@@ -13,6 +15,10 @@ function UserMetrics() {
     const tempoPorEstacao = calcularTempoPorEstacao(dados);
     const estacoesEPercentagens = calcularPercentagens(tempoPorEstacao);
 
+    const navigate = useNavigate();
+   
+    
+    
     // Using state to keep track of what the selected artist is
     let [artist, setArtist] = useState()
 
@@ -23,11 +29,8 @@ function UserMetrics() {
         setArtist(e.target.value)
     }
 
-    let horaMaisOuvida = horaMaisOuve()
-    let noite = true
-    if (horaMaisOuvida.hora >= 6 && horaMaisOuvida.hora <= 18) {
-        noite = false
-    }
+    let horaMaisOuvida = horaMaisOuve();
+    let noite = horaMaisOuvida.hora >= 6 && horaMaisOuvida.hora <= 18 ? false : true;
 
     return (
         <div className='bg-fundo h-full px-3 pb-14'>
@@ -99,5 +102,7 @@ function UserMetrics() {
         </div>
     );
 }
+
+
 
 export default UserMetrics;
