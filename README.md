@@ -16,17 +16,18 @@ This project was born from the need to explore and analyze one's own listening d
 
 **Teamwork and Communication**: Working as part of a team has been one of the most valuable aspects of this project. We learned the importance of clear communication, mutual respect, and the power of diverse ideas.
 
-## Quick app example
+## Our App!
 
-![Quick App Example](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHFneTQ0a3R5Mzg2c3p0N2I0cXd1NGV5ZTQ2eDUyanQwM3pvemo1YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GfTE5dQEnALVuICYyR/giphy.gif)
-
+<p align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHFneTQ0a3R5Mzg2c3p0N2I0cXd1NGV5ZTQ2eDUyanQwM3pvemo1YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GfTE5dQEnALVuICYyR/giphy.gif" alt="Quick App Example">
+</p>
 
 ## Contributors
 
-- [@Fábio Silva]([https://github.com/FabioTorresSilva])
-- [@Gabriela Nunes]([https://github.com/gabrielasnunes])
-- [@Diego Figueiroa]([(https://github.com/Diegofigueiroa)]) 
-- [@André Gonçalves]([https://github.com/DrowsyFever])
+- [@Fábio Silva](https://github.com/FabioTorresSilva)
+- [@Gabriela Nunes](https://github.com/gabrielasnunes)
+- [@Diego Figueiroa](https://github.com/Diegofigueiroa)
+- [@André Gonçalves](https://github.com/DrowsyFever)
 
 ## Future Improvements
 - ** We made our app focusing only in mobile, we need to improve our desktop responsivity
