@@ -1,7 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
-
 import { albumMaisOuvido, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista,numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
 
 function MetricasArtista() {
@@ -55,7 +53,7 @@ function MetricasArtista() {
                     <div>
                         <div className='flex'>
                             <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index + 1} </div>
-                            <div className='flex justify-between  text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.artistName} </p>
+                            <div className='flex justify-between  text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.nome} </p>
                                 <p className=''>{Math.round(e.totalMsPlayed / 60000)} min</p>
                             </div>
                         </div>

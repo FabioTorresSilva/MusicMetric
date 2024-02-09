@@ -85,9 +85,9 @@ export function Definicoes (){
     )
 }
 
-export function Search() {
+export function Search({onClick}) {
     return (
-        <svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg onClick={onClick} width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M59.5 27C59.5 40.961 47.0918 52.5 31.5 52.5C15.9082 52.5 3.5 40.961 3.5 27C3.5 13.039 15.9082 1.5 31.5 1.5C47.0918 1.5 59.5 13.039 59.5 27Z" fill="#321583" stroke="#321583" stroke-width="3"/>
         <path d="M43.414 35.586L38.337 30.509C39.386 28.928 40 27.035 40 25C40 19.486 35.514 15 30 15C24.486 15 20 19.486 20 25C20 30.514 24.486 35 30 35C32.035 35 33.928 34.386 35.509 33.337L40.586 38.414C41.366 39.195 42.634 39.195 43.414 38.414C44.195 37.633 44.195 36.367 43.414 35.586ZM23 25C23 21.14 26.14 18 30 18C33.86 18 37 21.14 37 25C37 28.86 33.86 32 30 32C26.14 32 23 28.86 23 25Z" fill="#FFD133"/>
         </svg>

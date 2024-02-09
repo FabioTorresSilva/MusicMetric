@@ -4,6 +4,7 @@ import { Play } from '../components/icons/Icons';
 import { calcularTop100ArtistasPorIntervalo } from '../common/Funcoes';
 
 const ArtistsPage = ({ selectedPeriod, setSelectedPeriod }) => {
+
   return (
     <div className=''>
       <div className='flex flex-col gap-4'>
@@ -12,7 +13,7 @@ const ArtistsPage = ({ selectedPeriod, setSelectedPeriod }) => {
           <Play />
         </div>
       </div>
-      
+
       {(calcularTop100ArtistasPorIntervalo(selectedPeriod)).map((e, index) =>
         <div className='flex flex-col' key={index}>
           <div className='flex'>
