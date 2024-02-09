@@ -4,40 +4,41 @@ import { AlbumDamn1 } from '../components/icons/Icons';
 
 const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
 
-  const [lista, setLista] = useState([])
+  // const [lista, setLista] = useState([])
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function fetchAlbumImage(album) {
+  //   // async function fetchAlbumImage(album) {
 
-      const res = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          auth: "BYTES4FUTURE #7",
-          name: album,
-          type: "album"
-        })
-      })
+  //   //   const res = await fetch("/", {
+  //   //     method: "POST",
+  //   //     headers: {
+  //   //       "Content-Type": "application/json"
+  //   //     },
+  //   //     body: JSON.stringify({
+  //   //       auth: "BYTES4FUTURE #7",
+  //   //       name: album,
+  //   //       type: "album"
+  //   //     })
+  //   //   })
 
-      if (res.status === 200) {
-        const body = await res.json()
+  //   //   if (res.status === 200) {
+  //   //     const body = await res.json()
 
-        return body.imagePath
-      }
-    }
+  //   //     return body.imagePath
+  //   //   }
+  //   // }
 
-    async function fetchData() {
-      const listaSemImages = calcularTop100MusicasPorMilissegundosEIntervalo(selectedPeriod)
-      const listaComImagens = await Promise.all(
-        listaSemImages.map(async el => ({ ...el, imagePath: await fetchAlbumImage(el.nome.split("")[2]) }))
-      )
-      setLista(listaComImagens)
-    }
-    fetchData()
-  })
+  //   async function fetchData() {
+  //     const listaSemImagens = calcularTop100MusicasPorMilissegundosEIntervalo(selectedPeriod)
+  //     // const listaComImagens = await Promise.all(
+  //     //   listaSemImages.map(async el => ({ ...el, imagePath: await fetchAlbumImage(el.nome.split("")[2]) }))
+  //     // )
+  //     setLista(listaSemImagens)
+  //   }
+
+  //   fetchData()
+  // })
 
   return (
     <div>
@@ -48,7 +49,8 @@ const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
         </div>
       </div>
     
-      {(lista).map((e, index) =>
+      {/* {(lista).map((e, index) => */}
+      {calcularTop100MusicasPorMilissegundosEIntervalo(selectedPeriod).map((e, index) =>
         <div>
           <div className='flex  justify-center'>
             <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index + 1} </div>
@@ -58,7 +60,7 @@ const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
           </div>
           <div className='flex justify-center'>
 
-        {/*   <img className="w-28 rounded-md flex justify-center" src={e.imagePath} /> */}
+         {/*  <img className="w-28 rounded-md flex justify-center" src={e.imagePath} /> */}
           </div>
         </div>
       )}

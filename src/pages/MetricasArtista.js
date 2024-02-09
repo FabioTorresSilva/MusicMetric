@@ -3,38 +3,38 @@ import { useParams } from 'react-router-dom';
 import { MinutesPlayedArtist, albumMaisOuvido, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista, filterArtistInfo, numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
 
 function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
-    const [imageUrl, setUrl] = useState("")
+    //const [imageUrl, setUrl] = useState("")
     let { artistName } = useParams();
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        async function fetchData() {
-            const res = await fetch("/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    auth: "BYTES4FUTURE #7",
-                    name: artistName,
-                    type: "artist"
-                })
-            })
-            if (res.status === 200) {
-                const body = await res.json()
-                setUrl(body.imagePath)
-            }
-        }
+    //     async function fetchData() {
+    //         const res = await fetch("/", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 auth: "BYTES4FUTURE #7",
+    //                 name: artistName,
+    //                 type: "artist"
+    //             })
+    //         })
+    //         if (res.status === 200) {
+    //             const body = await res.json()
+    //             setUrl(body.imagePath)
+    //         }
+    //     }
 
-        fetchData()
+    //     fetchData()
 
 
-    })
+    // })
 
 
     return (
         <div>  
-            <div><img src={imageUrl} /></div>
+            {/* <div><img src={imageUrl} /></div> */}
             <div className='flex justify-between'>
                 <div className='flex w-full'>
                     <h2 className='text-2xl flex justify-center font-bold text-white py-4 px-6 mt-4'>{artistName}</h2>
