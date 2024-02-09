@@ -33,7 +33,7 @@ function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
 
 
     return (
-        <div>
+        <div>  
             <div><img src={imageUrl} /></div>
             <div className='flex justify-between'>
                 <div className='flex w-full'>
@@ -50,9 +50,10 @@ function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
                     <div className='mb-2 text-xl font-bold text-white'>{numeroPlaysArtista(artistName)}</div>
                     <div className='text-lg text-letra'>vezes</div>
                 </div>
-                <div className='bg-amarelo w-full rounded-lg p-4 flex flex-col'>
-                    <div className='text-lg flex text-letra'>Passou<p className='mb-2 text-xl text-black font-bold'>{MinutesPlayedArtist(artistName)}</p></div>
-                    <div className='text-lg text-letra'>minutos a ouvir música.</div>
+                <div className='bg-amarelo   w-full rounded-lg p-4 flex flex-col'>
+                    <div className='text-lg text-letra'>Ouvido</div>
+                    <div className='mb-2 text-xl font-bold text-white'>{MinutesPlayedArtist(artistName)}</div>
+                    <div className='text-lg text-letra'>minutos</div>
                 </div>
             </div>
             <div>

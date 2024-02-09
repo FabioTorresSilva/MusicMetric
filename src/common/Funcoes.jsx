@@ -500,7 +500,7 @@ export function calcularTop20MusicasArtistaPorIntervalo(nomeArtista, intervalo) 
         minutosArtista += item.ms_played;
       }
     });
-    return `: ${Math.round(minutosArtista / 60000)}`;
+    return `${Math.round(minutosArtista / 60000)}`;
   }  
 
  
