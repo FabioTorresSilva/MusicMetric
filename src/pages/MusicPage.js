@@ -1,10 +1,19 @@
-import React from 'react';
-import { calcularTop100ArtistasPorIntervalo, calcularTop100MusicasPorMilissegundosEIntervalo } from '../common/Funcoes';
+import React, { useState } from 'react';
+import {calcularTop100MusicasPorMilissegundosEIntervalo } from '../common/Funcoes';
+import { IconBar } from './IconBar';
+
 
 const MusicPage = () => {
+  const [timeframe, setTimeframe] = useState('desdeSempre');
+
+  const handleTimeframeSelect = (selectedTimeframe) => {
+    setTimeframe(selectedTimeframe);
+  };
+
   return (
     <div>
-      {(calcularTop100MusicasPorMilissegundosEIntervalo('desdeSempre')).map((e, index) =>
+    <IconBar onTimeframeSelect={handleTimeframeSelect} />
+    {(calcularTop100MusicasPorMilissegundosEIntervalo(timeframe)).map((e, index) =>
         <div>
           <div className='flex'>
             <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index+1} </div>

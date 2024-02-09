@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import {mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
-import { useNavigate } from 'react-router-dom';
+
 import { Moon, Sun, Wave } from '../components/icons/Icons';
 
-function num(e) {
-    this.setState({ selected: e.target.value });
-}
+
 
 function UserMetrics() {
 
@@ -14,14 +12,10 @@ function UserMetrics() {
     const tempoPorEstacao = calcularTempoPorEstacao(dados);
     const estacoesEPercentagens = calcularPercentagens(tempoPorEstacao);
 
-    const navigate = useNavigate();
    
-    // Using state to keep track of what the selected artist is
     let [artist, setArtist] = useState()
 
-
-    // Using this function to update the state of artist
-    // whenever a new option is selected from the dropdown
+    
     let handleArtistChange = (e) => {
         setArtist(e.target.value)
     }
@@ -79,9 +73,7 @@ function UserMetrics() {
 
 
             </div>
-            <div>
-               
-            </div>
+            
         </div>
     );
 }

@@ -1,10 +1,9 @@
-import { FotoUser } from '../components/icons/Icons';
 import { AlbumDamn } from '../components/icons/Icons';
 import { albumMaisOuvido, calcularStrikeAtual, calcularStrikeDeEscuta, miliMinutosTocadosMusica, miliMinutosTocadosPodcast, musicasDiferentes, playsTotal } from '../common/Funcoes';
-import { calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
 import { ImageToggleOnMouseOver } from '../components/icons/userAvatar';
 import img1 from "../components/icons/FotoUsuario.png"
 import img2 from "../components/icons/FotoUsuario2.png"
+
 
 function HomePage() {
     return (
