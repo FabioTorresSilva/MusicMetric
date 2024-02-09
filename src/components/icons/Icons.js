@@ -5,6 +5,8 @@ import Sol from './Sol.png'
 import Lua from './Lua.png'
 import AlbumDAMN from './Damn.png'
 
+import FotoKendrick from './Kendrick.png'
+
 export function Play(){
     return (
         <svg width="303" height="28" viewBox="0 0 303 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,6 +14,12 @@ export function Play(){
         <path d="M66.1594 12.7367L50.9344 3.675C50.7484 3.56562 50.557 3.5 50.3383 3.5C49.7422 3.5 49.2555 3.99219 49.2555 4.59375H49.25V23.4062H49.2555C49.2555 24.0078 49.7422 24.5 50.3383 24.5C50.5625 24.5 50.7484 24.4234 50.9508 24.3141L66.1594 15.2633C66.5203 14.9625 66.75 14.5086 66.75 14C66.75 13.4914 66.5203 13.043 66.1594 12.7367Z" fill="#FFD133"/>
         </svg>
 
+    )
+}
+
+export function AlbumDamn1(){
+    return(
+        <img src={AlbumDAMN} className='text-lg rounded-lg w-50' ></img>
     )
 }
 
@@ -45,15 +53,16 @@ export function Disco() {
     )
 }
 
-export function AlbumDamn(){
-    return(
-        <img src={AlbumDAMN} className='text-lg rounded-lg w-32' ></img>
-    )
-}
+
 
 export function FotoUser() {
     return (
         <img src={FotoUsuario}></img>
+    )
+}
+export function KendrickAlbum() {
+    return (
+        <img src={FotoKendrick}></img>
     )
 }
 
@@ -91,7 +100,6 @@ export function Search({onClick}) {
         <path d="M59.5 27C59.5 40.961 47.0918 52.5 31.5 52.5C15.9082 52.5 3.5 40.961 3.5 27C3.5 13.039 15.9082 1.5 31.5 1.5C47.0918 1.5 59.5 13.039 59.5 27Z" fill="#321583" stroke="#321583" stroke-width="3"/>
         <path d="M43.414 35.586L38.337 30.509C39.386 28.928 40 27.035 40 25C40 19.486 35.514 15 30 15C24.486 15 20 19.486 20 25C20 30.514 24.486 35 30 35C32.035 35 33.928 34.386 35.509 33.337L40.586 38.414C41.366 39.195 42.634 39.195 43.414 38.414C44.195 37.633 44.195 36.367 43.414 35.586ZM23 25C23 21.14 26.14 18 30 18C33.86 18 37 21.14 37 25C37 28.86 33.86 32 30 32C26.14 32 23 28.86 23 25Z" fill="#FFD133"/>
         </svg>
-        
     )
 }
 export function Metricas() {

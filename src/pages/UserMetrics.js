@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import {mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
+import { mediaDiaria, horaMaisOuve, percentagemPlaysArtista, gerarTop100Artistas, calcularTempoPorEstacao, calcularPercentagens } from '../common/Funcoes';
 
 import { Moon, Sun, Wave } from '../components/icons/Icons';
 
@@ -12,10 +12,10 @@ function UserMetrics() {
     const tempoPorEstacao = calcularTempoPorEstacao(dados);
     const estacoesEPercentagens = calcularPercentagens(tempoPorEstacao);
 
-   
+
     let [artist, setArtist] = useState()
 
-    
+
     let handleArtistChange = (e) => {
         setArtist(e.target.value)
     }
@@ -50,7 +50,7 @@ function UserMetrics() {
                     </div>
                 </div>
 
-                <div className='text-center bg-amarelo w-full rounded-lg p-4 h-36 '>
+                <div className='text-center bg-fundo border-amarelo border-2  w-full rounded-lg p-4 h-36 '>
                     <div className='h-full flex gap-4 justify-center items-center content-center'>
                         <div className='flex justify-center items-center content-center'>
                             {noite ? <Moon /> : <Sun />}
@@ -62,18 +62,20 @@ function UserMetrics() {
                     </div>
                 </div>
 
-                <div className='flex justify-center text-xl font-bold text-white'>Percentagem em Plays:</div>
-                <div>
-                    <select className='flex text-xl font-bold py-2 content-center px-2 w-full justify-center items-center rounded-lg text-black text-center' onChange={handleArtistChange}>
-                        <option> Selecione o artista </option>
-                        {gerarTop100Artistas().map((artist) => <option value={artist}>{artist}</option>)}
-                    </select>
+                <div className='w-full bg-azul p-3 rounded-md mb-6'>
+                    <div className='flex justify-center text-xl font-bold text-white mb-2'>Percentagem em Plays:</div>
+                    <div className='w-full bg-azul'>
+                        <select className='flex text-xl font-bold py-2 content-center px-2 w-full justify-center items-center rounded-lg text-black text-center' onChange={handleArtistChange}>
+                            <option> Selecione o artista </option>
+                            {gerarTop100Artistas().map((artist) => <option value={artist}>{artist}</option>)}
+                        </select>
+                    </div>
+                    <div className='text-white text-2xl flex flex-col items-center text-center font-bold'> {percentagemPlaysArtista({ artist }.artist)} </div>
                 </div>
-                <div className='text-white text-2xl flex flex-col items-center text-center font-bold'> {percentagemPlaysArtista({ artist }.artist)} </div>
 
 
             </div>
-            
+
         </div>
     );
 }

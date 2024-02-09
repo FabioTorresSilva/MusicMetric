@@ -1,34 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Definicoes, Search, Metricas, Before } from '../components/icons/Icons';
+import { gerarTop100Artistas } from '../common/Funcoes';
 
 export function IconBar({ selectedPeriod, setSelectedPeriod }) {
-    const [search, setSearch] = useState({ isSearching: false, value: ""});
+    const [search, setSearch] = useState({ isSearching: false, value: "" });
+    const [sugestoes, setSugestoes] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
+    const [topArtistas, setTopArtistas] = useState([]);
 
-    const goToUserMetrics = () => {
-        navigate('/usermetrics');
-    };
-    const goToHomePage = () => {
-        navigate('/');
-    };
+    useEffect(() => {
+        const artistas = gerarTop100Artistas();
+        setTopArtistas(artistas);
+    }, []);
 
-    const handleSelection = (item) => {
-        setSelectedPeriod(item);
-    };
-    const handleSearchClick = () => {
-        setSearch(ps => ({ ...ps, isSearching: !ps.isSearching }));
-    };
+    const goToUserMetrics = () => navigate('/usermetrics');
+    const goToHomePage = () => navigate('/');
+
+    const handleSelection = (item) => setSelectedPeriod(item);
+    const handleSearchClick = () => setSearch(ps => ({ ...ps, isSearching: !ps.isSearching }));
     const handleInputChange = (value) => {
-        setSearch(ps => ({ ...ps, value: value }));
+        setSearch(ps => ({ ...ps, value }));
+        const sugestoesFiltradas = topArtistas
+            .filter(artista => artista.toLowerCase().includes(value.toLowerCase()))
+            .slice(0, 4); 
+        setSugestoes(sugestoesFiltradas);
     };
 
-    // Verifica se o caminho atual começa com '/artist/' seguido de qualquer coisa
+    const selecionarSugestao = (sugestao) => {
+        setSearch({ isSearching: false, value: sugestao }); // Encerra a pesquisa ao selecionar uma sugestão
+        setSugestoes([]);
+
+        // Navega para a página do artista
+        navigate(`/artista/${encodeURIComponent(sugestao)}`);
+    };
+
     const isArtistPath = location.pathname.startsWith('/artista/');
 
     return (
-        <div className="fixed bottom-0 inset-x-0 z-50">
+        <div className="fixed bottom-0 inset-x-0 z-50 ">
             <div className="flex justify-center gap-8 text-white py-4 ">
                 {(location.pathname === "/musicas" || location.pathname === "/artistas" || isArtistPath) && (
                     <div className="bg-fundo border-2 border-amarelo flex justify-around py-2 rounded-md w-full mx-6">
@@ -39,26 +50,35 @@ export function IconBar({ selectedPeriod, setSelectedPeriod }) {
                     </div>
                 )}
             </div>
-            <div className="icon-bar flex justify-around pt-3 bg-fundo">
+            <div className="flex justify-between items-center text-white py-3 px-4 bg-fundo">
                 {!search.isSearching && (
                     <>
                         <div className='cursor-pointer' onClick={goToHomePage}>
-                            <Before className="text-white" />
+                            <Before className="icon" />
                         </div>
                         <div className='cursor-pointer' onClick={goToUserMetrics}>
-                            <Metricas className="text-white" />
+                            <Metricas className="icon" />
                         </div>
                     </>
                 )}
-                <div className='cursor-pointer flex rounded-[32px] overflow-hidden' style={{ transition: "width 200ms linear", width: search.isSearching ? "100%" : "68px", backgroundColor: search.isSearching ? "#321583" : "transparent" }}>
+                <div className='relative flex items-center mt-3' style={{ flexGrow: search.isSearching ? 1 : 0 }}>
                     {search.isSearching && (
-                        <input className='flex-[3]' value={search.value} onChange={(e) => handleInputChange(e.target.value)} />
+                        <>
+                            <input className='w-full p-2 text-black' value={search.value} onChange={(e) => handleInputChange(e.target.value)} />
+                            <ul className="list-none absolute bottom-full w-full bg-white text-black shadow-md">
+                                {sugestoes.map((sugestao, index) => (
+                                    <li key={index} className="p-2 hover:bg-gray-200 cursor-pointer" onClick={() => selecionarSugestao(sugestao)}>
+                                        {sugestao}
+                                    </li>
+                                ))}
+                            </ul>
+                        </>
                     )}
-                    <Search className="text-white flex-[1]" onClick={handleSearchClick} />
+                    <Search className="ml-2 text-white" onClick={handleSearchClick} />
                 </div>
                 {!search.isSearching && (
                     <div className='cursor-pointer'>
-                        <Definicoes className="text-white" />
+                        <Definicoes className="icon" />
                     </div>
                 )}
             </div>

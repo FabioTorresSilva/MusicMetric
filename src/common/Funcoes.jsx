@@ -283,7 +283,7 @@ export function encontrarPosicaoArtistaNoTop100(nomeArtista) {
     const top100NomesArtistas = gerarTop100Artistas(array); 
     const posicao = top100NomesArtistas.indexOf(nomeArtista) + 1; 
     if (posicao > 0) {
-        return `Posição de ${nomeArtista} no top 100: ${posicao}`;
+        return `${posicao}`;
     } else {
         return `${nomeArtista} não está no top 100 artistas.`;
     }
@@ -331,6 +331,7 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
         return acc;
     }, {});
 
+
     // Ordenar por número de plays e selecionar top 100 artistas
     const ordenadoEConvertido = Object.values(agrupado)
         .sort((a, b) => b.count - a.count)
@@ -376,7 +377,7 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
     });
 
     const agrupado = filtrado.reduce((acc, item) => {
-        const chave = `${item.master_metadata_track_name} - ${item.master_metadata_album_artist_name}`;
+        const chave = `${item.master_metadata_track_name}`;
         if (!acc[chave]) {
             acc[chave] = 0;
         }
@@ -483,9 +484,7 @@ export function calcularTop20MusicasArtistaPorIntervalo(nomeArtista, intervalo) 
       }
       acc[chave].totalMsPlayed += item.ms_played;
       return acc;
-    }, {});
-  
-    // Ordena as músicas por total de milissegundos tocados e seleciona o top 20
+    }, {})
     const top20Musicas = Object.values(agregadoPorMusica)
       .sort((a, b) => b.totalMsPlayed - a.totalMsPlayed)
       .slice(0, 20);
@@ -493,3 +492,15 @@ export function calcularTop20MusicasArtistaPorIntervalo(nomeArtista, intervalo) 
     return top20Musicas;
   }
   
+
+  export function MinutesPlayedArtist(nome) {
+    let minutosArtista = 0;
+    array.forEach((item) => {
+      if (nome === item.master_metadata_album_artist_name) {
+        minutosArtista += item.ms_played;
+      }
+    });
+    return `: ${Math.round(minutosArtista / 60000)}`;
+  }  
+
+ 
