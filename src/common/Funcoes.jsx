@@ -294,9 +294,10 @@ export function encontrarPosicaoArtistaNoTop100(nomeArtista) {
 
 
 //PLAYS
+
 export function calcularTop100ArtistasPorIntervalo(intervalo) {
     const hoje = new Date();
-  let dataInicial;
+    let dataInicial;
 
   switch (intervalo) {
     case '4W':
@@ -326,20 +327,34 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
     const chave = item.master_metadata_track_name + ' - ' + item.master_metadata_album_artist_name;
     if (!acc[chave]) {
       acc[chave] = 0;
-    }
-    acc[chave] += item.ms_played;
-    return acc;
-  }, {});
+  }
 
-  const ordenado = Object.entries(agrupado)
-    .map(([nome, ms_played]) => ({
-      nome,
-      minutos: ms_played / 60000
-    }))
-    .sort((a, b) => b.minutos - a.minutos)
-    .slice(0, 100);
+    // Filtragem para excluir registros com valores null
+    const filtrado = array.filter(item => 
+        new Date(item.ts) >= dataInicial &&
+        item.master_metadata_album_artist_name != null
+    );
 
-  return ordenado;
+    // Agrupar por nome do artista e contar o número de plays
+    const agrupado = filtrado.reduce((acc, item) => {
+        const chave = item.master_metadata_album_artist_name;
+        if (!acc[chave]) {
+            acc[chave] = { count: 0, artistName: chave };
+        }
+        acc[chave].count += 1; // Incrementar o contador de plays para o artista
+        return acc;
+    }, {});
+
+    // Ordenar por número de plays e selecionar top 100 artistas
+    const ordenadoEConvertido = Object.values(agrupado)
+        .map(({ count, artistName }) => ({
+            artistName,
+            plays: count
+        }))
+        .sort((a, b) => b.plays - a.plays)
+        .slice(0, 100);
+
+    return ordenadoEConvertido;
 }
 
 
@@ -394,6 +409,7 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
 
     return ordenado;
 }
+
 
 
   // TOP 20 MILISEGUNDOS 

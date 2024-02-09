@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Definicoes, Search, Metricas, Before } from '../components/icons/Icons';
+import { FaSear } from 'react-icons/fa';
 
 
 export function IconBar({ selectedPeriod, setSelectedPeriod }) {
@@ -21,7 +22,7 @@ export function IconBar({ selectedPeriod, setSelectedPeriod }) {
 
     return (
         <div className="fixed bottom-0 inset-x-0 z-50">
-        <div className="flex justify-center gap-8 text-white py-4 ">
+            <div className="flex justify-center gap-8 text-white py-4 ">
             {(location.pathname === "/musicas" || location.pathname === "/artistas") && (
                 <div className=" bg-fundo border-2 border-amarelo flex justify-around py-2 rounded-md w-full mx-6">
                     {/* Adicione uma classe condicional baseada no estado selecionado */}

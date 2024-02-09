@@ -16,7 +16,8 @@ function App() {
         <Route path="/usermetrics" element={<Layout><UserMetrics /></Layout>} />
         <Route path="/musicas" element={<Layout><MusicPage /></Layout>} /> 
         <Route path="/artistas" element={<Layout><ArtistsPage /></Layout>} /> 
-        <Route path="/artista/:nome" element={<Layout><MetricasArtista /></Layout>} />
+        <Route path="/artista/:artistName" element={<Layout><MetricasArtista /></Layout>} />
+        
         
       </Routes>
     </Router>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link
+import { Link } from 'react-router-dom'; 
 import { Play } from '../components/icons/Icons';
 import { calcularTop100ArtistasPorIntervalo } from '../common/Funcoes';
 
@@ -17,8 +17,8 @@ const ArtistsPage = ({ selectedPeriod, setSelectedPeriod }) => {
         <div className='flex flex-col' key={index}>
           <div className='flex'>
             <div className='flex bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black'>#{index + 1}</div>
-            <Link to={`/artista/${e.nome}`} className='flex justify-between text-white bg-azul w-4/5 mb-4 p-4 rounded-r-lg'>
-              <p>{e.nome}</p>
+            <Link to={`/artista/${e.artistName}`} className='flex justify-between text-white bg-azul w-4/5 mb-4 p-4 rounded-r-lg'>
+              <p>{e.artistName}</p>
               <p>{e.plays} Plays</p>
             </Link>
           </div>
