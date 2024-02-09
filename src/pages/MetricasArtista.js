@@ -51,11 +51,11 @@ function MetricasArtista() {
             <div className='p-4 flex justify-center text-xl text-amarelo '>
                 Top Songs
             </div>
-                {(calcularTop20MusicasArtistaPorIntervalo((nome),'Always')).map((e, index) =>
+                {(calcularTop20MusicasArtistaPorIntervalo((artistName),'Always')).map((e, index) =>
                     <div>
                         <div className='flex'>
                             <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index + 1} </div>
-                            <div className='flex justify-between  text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.nome} </p>
+                            <div className='flex justify-between  text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.artistName} </p>
                                 <p className=''>{Math.round(e.totalMsPlayed / 60000)} min</p>
                             </div>
                         </div>

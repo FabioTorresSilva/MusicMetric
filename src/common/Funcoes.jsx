@@ -294,43 +294,29 @@ export function encontrarPosicaoArtistaNoTop100(nomeArtista) {
 
 
 //PLAYS
-
 export function calcularTop100ArtistasPorIntervalo(intervalo) {
     const hoje = new Date();
     let dataInicial;
 
-  switch (intervalo) {
-    case '4W':
-      dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
-      break;
-    case '6M':
-      dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
-      break;
-    case '1Y':
-      dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
-      break;
-    case 'Always':
-      dataInicial = new Date('1970-01-01');
-      break;
-    default:
-      throw new Error('Intervalo de tempo não especificado ou inválido.');
-  }
+    switch (intervalo) {
+        case '4W':
+            dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
+            break;
+        case '6M':
+            dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
+            break;
+        case '1Y':
+            dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
+            break;
+        case 'Always':
+            dataInicial = new Date('1970-01-01');
+            break;
+        default:
+            throw new Error('Intervalo de tempo não especificado ou inválido.');
+    }
 
-  // Filtragem adicional para excluir registros com valores null
-  const filtrado = array.filter(item => 
-    new Date(item.ts) >= dataInicial &&
-    item.master_metadata_track_name != null &&
-    item.master_metadata_album_artist_name != null
-  );
-
-  const agrupado = filtrado.reduce((acc, item) => {
-    const chave = item.master_metadata_track_name + ' - ' + item.master_metadata_album_artist_name;
-    if (!acc[chave]) {
-      acc[chave] = 0;
-  }
-
-    // Filtragem para excluir registros com valores null
-    const filtrado = array.filter(item => 
+    // Filtragem para excluir registros com valores null e verificar a data
+    const filtrado = array.filter(item =>
         new Date(item.ts) >= dataInicial &&
         item.master_metadata_album_artist_name != null
     );
@@ -341,22 +327,21 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
         if (!acc[chave]) {
             acc[chave] = { count: 0, artistName: chave };
         }
-        acc[chave].count += 1; // Incrementar o contador de plays para o artista
+        acc[chave].count += 1;
         return acc;
     }, {});
 
     // Ordenar por número de plays e selecionar top 100 artistas
     const ordenadoEConvertido = Object.values(agrupado)
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 100)
         .map(({ count, artistName }) => ({
             artistName,
             plays: count
-        }))
-        .sort((a, b) => b.plays - a.plays)
-        .slice(0, 100);
+        }));
 
     return ordenadoEConvertido;
 }
-
 
 
 
