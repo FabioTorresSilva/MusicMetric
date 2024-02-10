@@ -1,39 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Definicoes, Search, Metricas, Before } from '../components/icons/Icons';
-import { gerarTop100Artistas } from '../common/Funcoes';
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { Definicoes, Search, Metricas, Before } from '../components/icons/Icons'
+import { gerarTop100Artistas } from '../common/Funcoes'
 
 export function IconBar({ selectedPeriod, setSelectedPeriod }) {
     const [search, setSearch] = useState({ isSearching: false, value: "" });
     const [sugestoes, setSugestoes] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
-    const [topArtistas, setTopArtistas] = useState([]);
+    const [topArtistas, setTopArtistas] = useState([])
 
     useEffect(() => {
-        const artistas = gerarTop100Artistas();
+        const artistas = gerarTop100Artistas()
         setTopArtistas(artistas);
     }, []);
 
-    const goToUserMetrics = () => navigate('/usermetrics');
-    const goToHomePage = () => navigate('/');
+    const goToUserMetrics = () => navigate('/usermetrics')
+    const goToHomePage = () => navigate('/')
 
     const handleSelection = (item) => setSelectedPeriod(item);
-    const handleSearchClick = () => setSearch(ps => ({ ...ps, isSearching: !ps.isSearching }));
+    const handleSearchClick = () => setSearch(ps => ({ ...ps, isSearching: !ps.isSearching }))
     const handleInputChange = (value) => {
         setSearch(ps => ({ ...ps, value }));
         const sugestoesFiltradas = topArtistas
             .filter(artista => artista.toLowerCase().includes(value.toLowerCase()))
-            .slice(0, 4); 
+            .slice(0, 4);
         setSugestoes(sugestoesFiltradas);
     };
 
     const selecionarSugestao = (sugestao) => {
-        setSearch({ isSearching: false, value: sugestao }); // Encerra a pesquisa ao selecionar uma sugestão
+        setSearch({ isSearching: false, value: sugestao })
         setSugestoes([]);
 
-        // Navega para a página do artista
-        navigate(`/artista/${encodeURIComponent(sugestao)}`);
+        navigate(`/artista/${encodeURIComponent(sugestao)}`)
     };
 
     const isArtistPath = location.pathname.startsWith('/artista/');
@@ -64,8 +63,8 @@ export function IconBar({ selectedPeriod, setSelectedPeriod }) {
                 <div className='relative flex items-center mt-3' style={{ flexGrow: search.isSearching ? 1 : 0 }}>
                     {search.isSearching && (
                         <>
-                            <input className='w-full p-2 text-black' value={search.value} onChange={(e) => handleInputChange(e.target.value)} />
-                            <ul className="list-none absolute bottom-full w-full bg-white text-black shadow-md">
+                            <input className=" w-full p-2 text-amarelo font-bold bg-azul  rounded-xl focus:outline-none focus:ring-2  focus:border-transparent" value={search.value} onChange={(e) => handleInputChange(e.target.value)} />
+                            <ul className="absolute bottom-full w-full bg-azul text-letra font-bold shadow-md mt-1 rounded-md z-10">
                                 {sugestoes.map((sugestao, index) => (
                                     <li key={index} className="p-2 hover:bg-gray-200 cursor-pointer" onClick={() => selecionarSugestao(sugestao)}>
                                         {sugestao}
@@ -83,5 +82,5 @@ export function IconBar({ selectedPeriod, setSelectedPeriod }) {
                 )}
             </div>
         </div>
-    );
+    )
 }
