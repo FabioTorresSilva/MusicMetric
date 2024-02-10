@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { MinutesPlayedArtist, albumMaisOuvido, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista, filterArtistInfo, numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
+import { MinutesPlayedArtist, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista, numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
 
 function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
     //const [imageUrl, setUrl] = useState("")

@@ -19,7 +19,7 @@ export function Play(){
 
 export function AlbumDamn1(){
     return(
-        <img src={AlbumDAMN} className='text-lg rounded-lg w-50' ></img>
+        <img src={AlbumDAMN} className='text-lg rounded-lg w-50' alt='Album' ></img>
     )
 }
 
@@ -34,7 +34,7 @@ export function UserIcon({ fill }) {
 
 export function AppIcon() {
     return (
-        <img src={Logotipo}></img>
+        <img src={Logotipo} alt='logo'></img>
     )
 }
 
@@ -57,30 +57,30 @@ export function Disco() {
 
 export function FotoUser() {
     return (
-        <img src={FotoUsuario}></img>
+        <img src={FotoUsuario} alt='fotouser'></img>
     )
 }
 export function KendrickAlbum() {
     return (
-        <img src={FotoKendrick}></img>
+        <img src={FotoKendrick} alt='kendricklamar'></img>
     )
 }
 
 export function Wave () {
     return (
-        <img src={Onda}></img>
+        <img src={Onda} alt='wave'></img>
     )
 }
 
 export function Sun () {
     return (
-        <img src={Sol}></img>
+        <img src={Sol} alt='sun'></img>
     )
 }
 
 export function Moon () {
     return (
-        <img src={Lua}></img>
+        <img src={Lua} alt='moon'></img>
     )
 }
 
