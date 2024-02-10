@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { calcularTop100MusicasPorMilissegundosEIntervalo } from '../common/Funcoes';
 import { AlbumDamn1 } from '../components/icons/Icons';
+import { motion } from "framer-motion"
 
 const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
 
@@ -48,10 +49,26 @@ const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
           <AlbumDamn1  />
         </div>
       </div>
-    
+   
       {/* {(lista).map((e, index) => */}
       {calcularTop100MusicasPorMilissegundosEIntervalo(selectedPeriod).map((e, index) =>
-        <div>
+        <motion.div
+                        initial={{
+                            y: 100,
+                            scale: 1,
+                            opacity: 0
+                        }}
+                        animate={{
+                            y: 0,
+                            scale: [1, 0.99, 1],
+                            opacity: 2
+                        }}
+                        
+                        transition={{
+                            delay: index * 0.15
+                        }} 
+                        key={index} 
+                        >
           <div className='flex  justify-center'>
             <div className='flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black '>#{index + 1} </div>
             <div className='flex justify-between text-white bg-azul  w-4/5 mb-4 p-4  rounded-r-lg'><p>{e.nome} </p>
@@ -62,7 +79,10 @@ const MusicPage = ({ selectedPeriod, setSelectedPeriod }) => {
 
          {/*  <img className="w-28 rounded-md flex justify-center" src={e.imagePath} /> */}
           </div>
-        </div>
+          </motion.div>
+
+
+
       )}
       <div className='h-32 '></div>
     </div>

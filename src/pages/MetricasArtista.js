@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MinutesPlayedArtist, calcularTop20MusicasArtistaPorIntervalo, encontrarPosicaoArtistaNoTop100, estacaoMaisOuveArtista, numeroPlaysArtista, percentagemPlaysArtista } from '../common/Funcoes';
+import { motion } from "framer-motion"
 
 function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
     //const [imageUrl, setUrl] = useState("")
@@ -79,7 +80,23 @@ function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
                     artistName,
                     selectedPeriod
                 ).map((e, index) => (
-                    <div>
+                    <motion.div
+                        initial={{
+                            y: 100,
+                            scale: 1,
+                            opacity: 0
+                        }}
+                        animate={{
+                            y: 0,
+                            scale: [1, 0.99, 1],
+                            opacity: 2
+                        }}
+                        
+                        transition={{
+                            delay: index * 0.15
+                        }} 
+                        key={index} 
+                        >
                         <div className="flex">
                             <div className="flex  bg-amarelo font-bold text-xl w-1/5 mb-4 rounded-l-lg p-4 text-black ">
                                 #{index + 1}{" "}
@@ -89,7 +106,7 @@ function MetricasArtista({ selectedPeriod, setSelectPeriod }) {
                                 <p className="">{Math.round(e.totalMsPlayed / 60000)} min</p>
                             </div>
                         </div>
-                    </div>
+                  </motion.div>
                 ))}
                 <div className='h-20'></div>
             </div>

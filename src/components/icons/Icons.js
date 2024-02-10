@@ -19,7 +19,7 @@ export function Play(){
 
 export function AlbumDamn1(){
     return(
-        <img src={AlbumDAMN} className='text-lg rounded-lg w-50' alt='Album' ></img>
+        <img alt="albums" src={AlbumDAMN} className='text-lg rounded-lg w-50'  ></img>
     )
 }
 
