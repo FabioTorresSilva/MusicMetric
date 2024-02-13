@@ -14,7 +14,7 @@ This project was born from the need to explore and analyze one's own listening d
 
 - **Project Management**: Improving project management and planning skills, learning to break down the project into manageable pieces, and prioritizing tasks effectively.
 
-**Teamwork and Communication**: Working as part of a team has been one of the most valuable aspects of this project. We learned the importance of clear communication, mutual respect, and the power of diverse ideas.
+- **Teamwork and Communication**: Working as part of a team has been one of the most valuable aspects of this project. We learned the importance of clear communication, mutual respect, and the power of diverse ideas.
 
 ## Our App!
 
