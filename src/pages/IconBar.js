@@ -60,7 +60,7 @@ export function IconBar({ selectedPeriod, setSelectedPeriod }) {
                         </div>
                     </>
                 )}
-                <div className='relative flex items-center mt-3' style={{ flexGrow: search.isSearching ? 1 : 0 }}>
+                <div className='relative flex items-center mt-3 cursor-pointer' style={{ flexGrow: search.isSearching ? 1 : 0 }}>
                     {search.isSearching && (
                         <>
                             <input className=" w-full p-2 text-amarelo font-bold bg-azul  rounded-xl focus:outline-none focus:ring-2  focus:border-transparent" value={search.value} onChange={(e) => handleInputChange(e.target.value)} />

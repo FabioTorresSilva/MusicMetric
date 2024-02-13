@@ -7,7 +7,7 @@ export function calcularTempoPorEstacao() {
         Outono: 0,
         Inverno: 0
     };
-    
+
     array.forEach((item) => {
         const data = new Date(item.ts);
         const mes = data.getMonth() + 1;
@@ -22,11 +22,11 @@ export function calcularTempoPorEstacao() {
         } else {
             estacao = "Inverno";
         }
-        
-        const minutosTocados = parseInt(item.ms_played, 10) / 60000; 
+
+        const minutosTocados = parseInt(item.ms_played, 10) / 60000;
         tempoPorEstacao[estacao] += minutosTocados;
     });
-    
+
     return tempoPorEstacao;
 }
 
@@ -37,9 +37,9 @@ export function calcularPercentagens(tempoPorEstacao) {
         minutos: minutos.toFixed(2), // Arredondando para duas casas decimais
         percentagem: ((minutos / totalMinutos) * 100).toFixed(2) // Calcula a porcentagem
     }));
-    
+
     estacoesEPercentagens.sort((a, b) => b.minutos - a.minutos); // Ordena do mais ao menos tocado
-    
+
     return estacoesEPercentagens;
 }
 
@@ -55,7 +55,7 @@ export function estacoesEPercentagens() {
 
 
 
-export function musicasDiferentes(){
+export function musicasDiferentes() {
     return new Set(array.map((item) => item.master_metadata_track_name)).size
 }
 
@@ -77,15 +77,17 @@ export function horaMaisOuve() {
     }, Object.keys(tempoPorHora)[0])
 
     // preciamos de mais do que um campo com a mensagem a vir para fora, logo retornamos um objeto que tem o numero da hora
-    return {'msg': `entre as ${Number(horaMaisTocada)}h e as ${(Number(horaMaisTocada) + 1)}h`,
-    'hora':Number(horaMaisTocada)}
+    return {
+        'msg': `entre as ${Number(horaMaisTocada)}h e as ${(Number(horaMaisTocada) + 1)}h`,
+        'hora': Number(horaMaisTocada)
+    }
 }
 
 
 
 export function mediaDiaria() {
     const tempoPorDia = {};
-    const datas = new Set (array.map(item => new Date(item.ts.split('T')[0]).getTime()));
+    const datas = new Set(array.map(item => new Date(item.ts.split('T')[0]).getTime()));
     const primeiraData = new Date(Math.min(...datas));
     const ultimaData = new Date(Math.max(...datas));
 
@@ -112,26 +114,26 @@ export function playsTotal() {
 export function miliMinutosTocadosMusica() {
     let totalMilissegundos = 0;
     array
-      .filter((e) => {
-        return e.master_metadata_album_artist_name !== null;
-      })
-      .forEach((e) => {
-        totalMilissegundos += e.ms_played;
-      });
+        .filter((e) => {
+            return e.master_metadata_album_artist_name !== null;
+        })
+        .forEach((e) => {
+            totalMilissegundos += e.ms_played;
+        });
     return Math.round(totalMilissegundos / 60000);
-  }
-  
-  export function miliMinutosTocadosPodcast() {
+}
+
+export function miliMinutosTocadosPodcast() {
     let totalMilissegundos = 0;
     array
-      .filter((e) => {
-        return e.episode_name !== null;
-      })
-      .forEach((e) => {
-        totalMilissegundos += e.ms_played;
-      });
+        .filter((e) => {
+            return e.episode_name !== null;
+        })
+        .forEach((e) => {
+            totalMilissegundos += e.ms_played;
+        });
     return Math.round(totalMilissegundos / 60000);
-  }
+}
 
 // ARTISTA
 //Ver % das plays dentro do total (ex: Kendrick Lamar representa 1.7% das minhas plays)
@@ -139,7 +141,7 @@ export function miliMinutosTocadosMusica() {
 export function numeroPlaysArtista(nome) {
     const artistaPlays = {}
     array.forEach((item) => {
-        artistaPlays[item.master_metadata_album_artist_name] = (artistaPlays[item.master_metadata_album_artist_name] || 0) + 1 
+        artistaPlays[item.master_metadata_album_artist_name] = (artistaPlays[item.master_metadata_album_artist_name] || 0) + 1
     })
     return artistaPlays[nome]
 }
@@ -153,13 +155,13 @@ export function percentagemPlaysArtista(nome) {
         const artista = item.master_metadata_album_artist_name;
         percentagemArtistaPlays[artista] = (percentagemArtistaPlays[artista] || 0) + 1
     })
-  
+
     Object.keys(percentagemArtistaPlays).forEach((artista) => {
         percentagemArtistaPlays[artista] = (percentagemArtistaPlays[artista] / totalReproducoes) * 100
     })
 
-    let percentagem = percentagemArtistaPlays[nome] > 0 ? percentagemArtistaPlays[nome].toFixed(2)+'%' : percentagemArtistaPlays[nome]
-    return percentagem 
+    let percentagem = percentagemArtistaPlays[nome] > 0 ? percentagemArtistaPlays[nome].toFixed(2) + '%' : percentagemArtistaPlays[nome]
+    return percentagem
 }
 
 
@@ -265,23 +267,23 @@ export function calcularStrikeAtual() {
 export function gerarTop100Artistas() {
     const contagemPlays = {};
     array.forEach((item) => {
-      const artistName = item.master_metadata_album_artist_name; 
-      contagemPlays[artistName] = (contagemPlays[artistName] || 0) + 1;
+        const artistName = item.master_metadata_album_artist_name;
+        contagemPlays[artistName] = (contagemPlays[artistName] || 0) + 1;
     });
-  
+
     const topArtistas = Object.entries(contagemPlays)
-      .filter(([artistName, _]) => artistName !== "null")
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 100)
-      .map(entry => entry[0])
-      
+        .filter(([artistName, _]) => artistName !== "null")
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 100)
+        .map(entry => entry[0])
+
     return topArtistas;
 }
 
 
 export function encontrarPosicaoArtistaNoTop100(nomeArtista) {
-    const top100NomesArtistas = gerarTop100Artistas(array); 
-    const posicao = top100NomesArtistas.indexOf(nomeArtista) + 1; 
+    const top100NomesArtistas = gerarTop100Artistas(array);
+    const posicao = top100NomesArtistas.indexOf(nomeArtista) + 1;
     if (posicao > 0) {
         return `${posicao}`;
     } else {
@@ -315,34 +317,31 @@ export function calcularTop100ArtistasPorIntervalo(intervalo) {
             throw new Error('Intervalo de tempo não especificado ou inválido.');
     }
 
-    // Filtragem para excluir registros com valores null e verificar a data
     const filtrado = array.filter(item =>
         new Date(item.ts) >= dataInicial &&
         item.master_metadata_album_artist_name != null
     );
 
-    // Agrupar por nome do artista e contar o número de plays
     const agrupado = filtrado.reduce((acc, item) => {
-        const chave = item.master_metadata_album_artist_name;
+        const chave = item.master_metadata_album_artist_name
         if (!acc[chave]) {
-            acc[chave] = { count: 0, artistName: chave };
+            acc[chave] = { count: 0, artistName: chave }
         }
-        acc[chave].count += 1;
-        return acc;
-    }, {});
+        acc[chave].count += 1
+        return acc
+    }, {})
 
-
-    // Ordenar por número de plays e selecionar top 100 artistas
     const ordenadoEConvertido = Object.values(agrupado)
         .sort((a, b) => b.count - a.count)
         .slice(0, 100)
         .map(({ count, artistName }) => ({
             artistName,
             plays: count
-        }));
+        }))
 
-    return ordenadoEConvertido;
+    return ordenadoEConvertido
 }
+
 
 
 
@@ -398,9 +397,9 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
 
 
 
-  // TOP 20 MILISEGUNDOS 
+// TOP 20 MILISEGUNDOS 
 
-  export function calcularTop20MusicasPorMilissegundosEIntervalo(intervalo) {
+export function calcularTop20MusicasPorMilissegundosEIntervalo(intervalo) {
     const hoje = new Date();
     let dataInicial;
 
@@ -415,7 +414,7 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
             dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
             break;
         case 'Always':
-            dataInicial = new Date('1970-01-01'); 
+            dataInicial = new Date('1970-01-01');
             break;
         default:
             throw new Error('Intervalo de tempo não especificado ou inválido.');
@@ -451,56 +450,55 @@ export function calcularTop100MusicasPorMilissegundosEIntervalo(intervalo) {
 export function calcularTop20MusicasArtistaPorIntervalo(nomeArtista, intervalo) {
     const hoje = new Date();
     let dataInicial;
-  
+
     switch (intervalo) {
-      case '4W':
-        dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
-        break;
-      case '6M':
-        dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
-        break;
-      case '1Y':
-        dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
-        break;
-      case 'Always':
-        dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
-        break;
-      default:
-        throw new Error('Intervalo de tempo não especificado ou inválido.');
+        case '4W':
+            dataInicial = new Date(new Date().setDate(hoje.getDate() - 28));
+            break;
+        case '6M':
+            dataInicial = new Date(new Date().setMonth(hoje.getMonth() - 6));
+            break;
+        case '1Y':
+            dataInicial = new Date(new Date().setFullYear(hoje.getFullYear() - 1));
+            break;
+        case 'Always':
+            dataInicial = new Date('1970-01-01'); // Representa "desde sempre"
+            break;
+        default:
+            throw new Error('Intervalo de tempo não especificado ou inválido.');
     }
-  
+
     // Filtra os dados pelo artista e pelo intervalo de datas
-    const dadosFiltrados = array.filter(item => 
-      item.master_metadata_album_artist_name === nomeArtista && new Date(item.ts) >= dataInicial);
-  
+    const dadosFiltrados = array.filter(item =>
+        item.master_metadata_album_artist_name === nomeArtista && new Date(item.ts) >= dataInicial);
+
     // Agrega os dados por música, somando os milissegundos tocados
     const agregadoPorMusica = dadosFiltrados.reduce((acc, item) => {
-      const chave = item.master_metadata_track_name;
-      if (!acc[chave]) {
-        acc[chave] = {
-          nome: item.master_metadata_track_name,
-          totalMsPlayed: 0
-        };
-      }
-      acc[chave].totalMsPlayed += item.ms_played;
-      return acc;
+        const chave = item.master_metadata_track_name;
+        if (!acc[chave]) {
+            acc[chave] = {
+                nome: item.master_metadata_track_name,
+                totalMsPlayed: 0
+            };
+        }
+        acc[chave].totalMsPlayed += item.ms_played;
+        return acc;
     }, {})
     const top20Musicas = Object.values(agregadoPorMusica)
-      .sort((a, b) => b.totalMsPlayed - a.totalMsPlayed)
-      .slice(0, 20);
-  
-    return top20Musicas;
-  }
-  
+        .sort((a, b) => b.totalMsPlayed - a.totalMsPlayed)
+        .slice(0, 20);
 
-  export function MinutesPlayedArtist(nome) {
+    return top20Musicas;
+}
+
+
+export function MinutesPlayedArtist(nome) {
     let minutosArtista = 0;
     array.forEach((item) => {
-      if (nome === item.master_metadata_album_artist_name) {
-        minutosArtista += item.ms_played;
-      }
+        if (nome === item.master_metadata_album_artist_name) {
+            minutosArtista += item.ms_played;
+        }
     });
     return `${Math.round(minutosArtista / 60000)}`;
-  }  
+}
 
- 
