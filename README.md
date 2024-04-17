@@ -19,7 +19,7 @@ This project was born from the need to explore and analyze one's own listening d
 ## Our App!
 
 <p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmsxNjZ0OWk1dm9qNGppaW54cDBjbGhqODQ4dGtkOXBld2I1bW9lYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vatWBiVlY4XRGzYbcv/giphy.gif" alt="Quick App Example">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmdGtkOXBld2I1bW9lYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vatWBiVlY4XRGzYbcv/giphy.gif" alt="Quick App Example">
 </p>
 
 ## Contributors
